@@ -1,0 +1,1 @@
+const KEY='quote.studio.draft.v2',$=s=>document.querySelector(s),body=$('#lines');let entries=[],saveTimer;
