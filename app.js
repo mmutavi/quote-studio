@@ -1,2 +1,3 @@
 const KEY='quote.studio.draft.v2',$=s=>document.querySelector(s),body=$('#lines');let entries=[],saveTimer;
 const fields=['business','client','email','valid','issued','tax','deposit','terms','currency'];
+function safe(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
