@@ -2,3 +2,4 @@ const KEY='quote.studio.draft.v2',$=s=>document.querySelector(s),body=$('#lines'
 const fields=['business','client','email','valid','issued','tax','deposit','terms','currency'];
 function safe(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function currency(){return $('#currency').value||'USD'}
+function fmt(n){return new Intl.NumberFormat(undefined,{style:'currency',currency:currency()}).format(Number(n)||0)}
