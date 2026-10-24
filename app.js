@@ -3,3 +3,4 @@ const fields=['business','client','email','valid','issued','tax','deposit','term
 function safe(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function currency(){return $('#currency').value||'USD'}
 function fmt(n){return new Intl.NumberFormat(undefined,{style:'currency',currency:currency()}).format(Number(n)||0)}
+function draft(){return Object.fromEntries(fields.map(k=>[k,$('#'+k).value]).concat([['entries',entries]]))}
