@@ -6,3 +6,4 @@ function fmt(n){return new Intl.NumberFormat(undefined,{style:'currency',currenc
 function draft(){return Object.fromEntries(fields.map(k=>[k,$('#'+k).value]).concat([['entries',entries]]))}
 function persist(manual=false){localStorage.setItem(KEY,JSON.stringify(draft()));$('#save-state').textContent='Saved just now';if(manual)toast('Draft saved on this device')}
 function scheduleSave(){clearTimeout(saveTimer);$('#save-state').textContent='Saving…';saveTimer=setTimeout(()=>persist(),350)}
+function toast(text){$('#toast').textContent=text;$('#toast').classList.add('show');setTimeout(()=>$('#toast').classList.remove('show'),1800)}
