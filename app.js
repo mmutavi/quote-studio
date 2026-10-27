@@ -5,3 +5,4 @@ function currency(){return $('#currency').value||'USD'}
 function fmt(n){return new Intl.NumberFormat(undefined,{style:'currency',currency:currency()}).format(Number(n)||0)}
 function draft(){return Object.fromEntries(fields.map(k=>[k,$('#'+k).value]).concat([['entries',entries]]))}
 function persist(manual=false){localStorage.setItem(KEY,JSON.stringify(draft()));$('#save-state').textContent='Saved just now';if(manual)toast('Draft saved on this device')}
+function scheduleSave(){clearTimeout(saveTimer);$('#save-state').textContent='Saving…';saveTimer=setTimeout(()=>persist(),350)}
