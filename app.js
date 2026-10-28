@@ -7,3 +7,4 @@ function draft(){return Object.fromEntries(fields.map(k=>[k,$('#'+k).value]).con
 function persist(manual=false){localStorage.setItem(KEY,JSON.stringify(draft()));$('#save-state').textContent='Saved just now';if(manual)toast('Draft saved on this device')}
 function scheduleSave(){clearTimeout(saveTimer);$('#save-state').textContent='Saving…';saveTimer=setTimeout(()=>persist(),350)}
 function toast(text){$('#toast').textContent=text;$('#toast').classList.add('show');setTimeout(()=>$('#toast').classList.remove('show'),1800)}
+function addLine(item={name:'',qty:1,rate:0}){entries.push({...item});draw()}
