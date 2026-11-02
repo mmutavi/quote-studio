@@ -8,3 +8,4 @@ function persist(manual=false){localStorage.setItem(KEY,JSON.stringify(draft()))
 function scheduleSave(){clearTimeout(saveTimer);$('#save-state').textContent='Saving…';saveTimer=setTimeout(()=>persist(),350)}
 function toast(text){$('#toast').textContent=text;$('#toast').classList.add('show');setTimeout(()=>$('#toast').classList.remove('show'),1800)}
 function addLine(item={name:'',qty:1,rate:0}){entries.push({...item});draw()}
+function draw(){body.innerHTML=entries.map((x,i)=>`<tr><td><input class="input" data-field="name" data-i="${i}" value="${safe(x.name)}" placeholder="e.g.
