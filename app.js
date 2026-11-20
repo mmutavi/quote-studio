@@ -14,4 +14,4 @@ body.addEventListener('input',e=>{const f=e.target.dataset.field;if(f){const i=+
 $('#add-line').addEventListener('click',()=>{addLine();body.querySelector('tr:last-child [data-field="name"]')?.focus();scheduleSave()});$('#print').addEventListener('click',()=>window.print());$('#save').addEventListener('click',()=>persist(true));
 fields.forEach(k=>$('#'+k).addEventListener('input',()=>{totals();scheduleSave()}));$('#currency').addEventListener('change',()=>{draw();scheduleSave()});
 $('#quote-date').textContent=new Date().toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'});$('#issued').value=new Date().toISOString().slice(0,10);$('#valid').value=new Date(Date.now()+14*86400000).toISOString().slice(0,10);
-try{const d=JSON.parse(localStorage.getItem(KEY)||localStorage.getItem('quote.studio.draft')||'null');if(d){fields.forEach(k=>{if(d[k]!=n
+try{const d=JSON.parse(localStorage.getItem(KEY)||localStorage.getItem('quote.studio.draft')||'null');if(d){fields.forEach(k=>{if(d[k]!=null)$('#'+k).value=d[k]});entries=Array.isArray(d.entries)?d.entries:[]}}catch{}if(!entries.length)entries=[{name:'',qty:1,rate:0}];draw();
